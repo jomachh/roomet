@@ -1,0 +1,25 @@
+{
+  "name": "Roomet",
+  "version": "1.0.0",
+  "description": "Proyecto de curso de titulacion",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@svgr/webpack": "5.4.0",
+    "dotenv": "8.2.0",
+    "firebase": "7.15.1",
+    "next": "9.4.4",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "webpack": "4.43.0"
+  },
+  "devDependencies": {
+    "node-sass": "4.14.1",
+    "styled-jsx-plugin-sass": "1.0.0"
+  }
+}
