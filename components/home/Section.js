@@ -1,13 +1,13 @@
 import RoomBox from "../RoomBox";
 
-export default function Section({ title, rooms, showMore }) {
+export default function Section({ title, rooms, showMore, customMsg }) {
   console.log(rooms);
   return (
     <div className="container py-6">
       <h1 className="text-3xl font-light text-grey-darkest mb-3">{title}</h1>
       <div className="grid-container mb-8">
         {rooms == undefined ? (
-          <p>No hay cuartos en esta sección</p>
+          <p>{customMsg ? customMsg : "No hay cuartos en esta sección"}</p>
         ) : (
           rooms.map((room, index) => {
             return (

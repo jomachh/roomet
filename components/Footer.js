@@ -26,7 +26,7 @@ export default function Footer() {
           </div>
         </section>
       </div>
-      <div className=" bg-turquey py-4">
+      <div className="bg-turquey py-4">
         <div className="container">
           <div style={{ color: "white" }}>
             Una aplicación pinolera, ¡Que se rinda tu madre!

@@ -13,10 +13,12 @@ export default function RoomBox({ imageUrl, title, price }) {
       <style jsx>
         {`
           .house-card {
+            cursor: pointer;
             color: black;
             height: 237px;
             width: 235px;
             line-height: 18px;
+            margin-right: 15px;
             margin-bottom: 12px;
           }
           .house-image {

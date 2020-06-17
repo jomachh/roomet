@@ -1,6 +1,10 @@
+import { useState } from "react";
+import Link from "next/link";
 import Search from "../../public/assets/search.svg";
 
 export default function Hero() {
+  const [searchText, setSearchText] = useState("");
+
   return (
     <section className="hero bg-cover bg-center bg-black py-6">
       <div className="container">
@@ -24,12 +28,17 @@ export default function Hero() {
                   type="text"
                   placeholder="Managua, Nicaragua"
                   className="input-search"
+                  onChange={(e) => {
+                    setSearchText(e.target.value.toLowerCase());
+                  }}
                 ></input>
               </div>
             </div>
-            <button className="semi-bold w-full text-yellow-darker py-6 px-2 bg-yellow-dark rounded">
-              Buscar
-            </button>
+            <Link href={`/search/${searchText}`}>
+              <button className=" pointer semi-bold w-full text-yellow-darker py-6 px-2 bg-yellow-dark rounded">
+                Buscar
+              </button>
+            </Link>
           </form>
         </div>
       </div>

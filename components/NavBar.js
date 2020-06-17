@@ -1,6 +1,10 @@
 import Link from "next/link";
+import Login from "./modal/Login";
+import { useState } from "react";
 
 export default function NavBar() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div className="bg-white">
       <div className="navBar">
@@ -8,14 +12,21 @@ export default function NavBar() {
           <a className="semi-bold text-black text-lg no-underline">Roomet</a>
         </Link>
         <div className="auth_buttons">
-          <button className="btn_outline_rounded semi-bold rounded mr-2">
+          <button
+            onClick={() => setShowModal(!showModal)}
+            className="btn_outline_rounded semi-bold rounded mr-2"
+          >
             Iniciar sesión
           </button>
-          <button className="semi-bold rounded btn_yellow_black">
+          <button
+            onClick={() => console.log(showModal)}
+            className="semi-bold rounded btn_yellow_black"
+          >
             Registrarse
           </button>
         </div>
       </div>
+      {showModal ? <Login closeModal={() => setShowModal(!showModal)} /> : null}
       <style jsx>
         {`
           .navBar {
@@ -39,6 +50,7 @@ export default function NavBar() {
             flex-direction: row;
           }
           .btn_outline_rounded {
+            cursor: pointer;
             padding: 0.5rem 1rem 0.5rem 1rem;
             font-size: 100%;
             background: transparent;
@@ -48,6 +60,7 @@ export default function NavBar() {
             border-style: solid;
           }
           .btn_yellow_black {
+            cursor: pointer;
             padding: 0.5rem 1rem 0.5rem 1rem;
             font-size: 100%;
             background: #f2d024;
