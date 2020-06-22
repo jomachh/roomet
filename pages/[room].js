@@ -210,7 +210,7 @@ export default function Room({ details }) {
 
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { room: "qwe" } }],
+    paths: [{ params: { room: "kjUgl77mrTpb5Mc07sux" } }],
     fallback: true,
   };
 }
