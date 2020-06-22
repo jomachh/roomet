@@ -1,6 +1,14 @@
-export default function RoomBox({ imageUrl, title, price }) {
+import { useRouter } from "next/router";
+
+export default function RoomBox({ id, imageUrl, title, price }) {
+  const router = useRouter();
   return (
-    <div className="house-card mb-3">
+    <div
+      onClick={() => {
+        router.push(`/${id}`);
+      }}
+      className="house-card mb-3"
+    >
       <div className="house-image relative overflow-hidden">
         <img className="w-full absolute" src={imageUrl} />
       </div>

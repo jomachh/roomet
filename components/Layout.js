@@ -20,6 +20,7 @@ export default function Layout({ children, title }) {
           .container {
             min-height: 100vh;
             display: flex;
+            flex: 1 0 auto;
             flex-direction: column;
           }
         `}

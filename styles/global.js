@@ -111,6 +111,9 @@ export default css.global`
   .text-grey-darknest {
     color: #3d4852;
   }
+  .m-2 {
+    margin: 0.5rem;
+  }
   .mb-2 {
     margin-bottom: 0.5rem;
   }
@@ -140,6 +143,18 @@ export default css.global`
   }
   .text-yellow-darker {
     color: #684f1d;
+  }
+  .mx-2 {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  .mx-4 {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .my-4 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
   .px-2 {
     padding-left: 0.5rem;
@@ -171,6 +186,9 @@ export default css.global`
   }
   .absolute {
     position: absolute;
+  }
+  .pr-3 {
+    padding-right: 0.75rem;
   }
   .py-2 {
     padding-top: 0.5rem;
@@ -222,5 +240,23 @@ export default css.global`
     &:hover {
       background-color: #f2f7fb;
     }
+  }
+  .flex {
+    display: flex;
+  }
+  .center-self {
+    justify-content: center;
+  }
+  .align-items {
+    align-items: center;
+  }
+  .no-selectable {
+    user-select: none;
+  }
+  .error-text {
+    color: #ef5350;
+  }
+  .space-between {
+    justify-content: space-between;
   }
 `;

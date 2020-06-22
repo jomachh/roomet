@@ -13,6 +13,7 @@ export default function Section({ title, rooms, showMore, customMsg }) {
             return (
               <RoomBox
                 key={index}
+                id={room.id}
                 title={room.title}
                 imageUrl={room.imageUrl}
                 price={room.price}

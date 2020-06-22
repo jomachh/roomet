@@ -1,6 +1,12 @@
 import modalStyles from "../../styles/modal";
 
-export default function Login({ closeModal }) {
+export default function Login({
+  closeModal,
+  onAuthClick,
+  showError,
+  setEmail,
+  setPassword,
+}) {
   return (
     <div className="modal">
       <div className="p-3 modal-content rounded shadow-md border bd-grey-light">
@@ -26,6 +32,7 @@ export default function Login({ closeModal }) {
               type="text"
               placeholder="tunombre@gmail.com"
               className="input-search"
+              onChange={(e) => setEmail(e.target.value)}
             ></input>
           </form>
         </div>
@@ -37,11 +44,19 @@ export default function Login({ closeModal }) {
               type="password"
               placeholder="**********"
               className="input-search"
+              onChange={(e) => setPassword(e.target.value)}
             ></input>
           </form>
         </div>
         <div className="mb-4">
-          <button className="w-full rounded btn border">Iniciar sesión</button>
+          {showError ? (
+            <div className="mb-2 error-text text-xs">
+              Ha ocurrido un error, intenta nuevamente.
+            </div>
+          ) : null}
+          <button className="w-full rounded btn border" onClick={onAuthClick}>
+            Iniciar sesión
+          </button>
         </div>
       </div>
       <style jsx>{modalStyles}</style>

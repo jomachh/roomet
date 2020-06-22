@@ -32,12 +32,12 @@ export async function getStaticProps() {
             })
           );
         });
-        console.log(data);
         resolve(data);
       })
       .catch((err) => {
         reject(err.toString());
       });
   });
+
   return { props: { rooms } };
 }
