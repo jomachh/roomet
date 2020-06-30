@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import cookie from "js-cookie";
 import Layout from "../components/Layout";
+import Section from "../components/home/Section";
 import fb from "../firebase.config";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 const MySwal = withReactContent(Swal);
 
-export default function Profile({ cards }) {
+export default function Profile() {
   const [userData, setUserData] = useState();
   const [selectProfileData, setSelectProfileData] = useState(true);
   const [selectPaymentMethods, setSelectPaymentMethods] = useState(false);
@@ -19,6 +20,7 @@ export default function Profile({ cards }) {
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [cardNumber, setCardNumber] = useState("");
+  const [rooms, setRooms] = useState([]);
 
   const router = useRouter();
 
@@ -34,6 +36,38 @@ export default function Profile({ cards }) {
     validateSession();
     console.log("Estuviste aquí");
   }, []);
+
+  useEffect(() => {
+    const getRooms = async () => {
+      const firebase = await fb();
+      const db = firebase.firestore();
+      db.collection("rooms")
+        .where("userId", "==", userData.uid)
+        .get()
+        .then((snapshot) => {
+          let data = [];
+          snapshot.forEach((doc) => {
+            data.push(
+              Object.assign({
+                id: doc.id,
+                title: doc.data().title,
+                location: doc.data().location,
+                price: doc.data().price,
+                imageUrl: doc.data().featured_image,
+              })
+            );
+          });
+          setRooms(data);
+        })
+        .catch((error) => {
+          MySwal.fire("Ups", `Ha ocurrido un error: ${error}`, "error");
+        });
+    };
+
+    if (userData) {
+      getRooms();
+    }
+  }, userData);
 
   const editProfile = async () => {
     try {
@@ -104,6 +138,7 @@ export default function Profile({ cards }) {
 
   return userData ? (
     <Layout title={`Roomet - ${userData.displayName}`}>
+      <Section title="Tus publicaciones" rooms={rooms} />
       <div className="container bg-white border bd-grey-light my-4 shadow-md rounded flex">
         <div className="left bd-grey-light">
           <div
@@ -371,6 +406,7 @@ export default function Profile({ cards }) {
           ) : null}
         </div>
       </div>
+
       <style jsx>
         {`
           .container {

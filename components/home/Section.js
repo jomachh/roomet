@@ -5,7 +5,7 @@ export default function Section({ title, rooms, showMore, customMsg }) {
   return (
     <div className="container py-6">
       <h1 className="text-3xl font-light text-grey-darkest mb-3">{title}</h1>
-      <div className="grid-container mb-8">
+      <div className={`grid-container ${showMore ? "mb-8" : null}`}>
         {rooms == undefined ? (
           <p>{customMsg ? customMsg : "No hay cuartos en esta sección"}</p>
         ) : (

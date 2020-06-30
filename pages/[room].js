@@ -21,6 +21,8 @@ export default function Room({ details }) {
   const validateSession = () => {
     if (cookie.get("user")) {
       setUserData(JSON.parse(cookie.get("user")));
+    } else {
+      console.log("F");
     }
   };
   const { room } = router.query;
@@ -147,7 +149,13 @@ export default function Room({ details }) {
                 <button
                   onClick={() => {
                     if (userData) {
-                      setShowModal(!showModal);
+                      if (userData.displayName == details.userName) {
+                        router.push(`/profile/edit/${room}`, undefined, {
+                          shallow: true,
+                        });
+                      } else {
+                        setShowModal(!showModal);
+                      }
                     } else {
                       MySwal.fire(
                         "Ups",
@@ -158,7 +166,11 @@ export default function Room({ details }) {
                   }}
                   className="rounded bg-yellow-dark text-yellow-darker w-full py-3 pointer"
                 >
-                  Reservar
+                  {userData
+                    ? userData.displayName == details.userName
+                      ? "Editar"
+                      : "Reservar"
+                    : "Reservar"}
                 </button>
               </div>
             </div>

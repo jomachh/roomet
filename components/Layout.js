@@ -1,6 +1,7 @@
 import Head from "next/head";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
+import Bot from "./bot/chat";
 import globalStyles from "../styles/global";
 
 export default function Layout({ children, title }) {
@@ -11,6 +12,7 @@ export default function Layout({ children, title }) {
       </Head>
       <NavBar />
       {children}
+      <Bot />
       <Footer />
       <style jsx global>
         {globalStyles}
